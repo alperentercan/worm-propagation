@@ -12,9 +12,9 @@ src/graph_utils.py: Functions to generate, save, and load graphs.
 
 Running Example Experiments:
 
-Running Program 1 on the graph in graph.csv 6 times and nodes 6,7,249 will be infected initially. Infection rate is 0.03:
+Running Program 1 on the graph in binomial-0.csv 6 times and nodes 6,7,249 will be infected initially. Infection rate is 0.03:
 
-`python src/main.py --input_file graph.csv --p_infection 0.03 --initially_infected 6 7 249 --nsims 6`
+`python src/main.py --input_file example_graphs/binomial-0.csv --p_infection 0.03 --initially_infected 6 7 249 --nsims 6`
 
 Running Program 2 on a new Scale-free graph with 1000 nodes and 3000 edges nodes 2,45 will be cured initially and 3 randomly chosen nodes will be infected initially. Infection rate is 0.03 and Cure rate is 0.01. Experiment is run 2 times. Output roundly information to console:
 

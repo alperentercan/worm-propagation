@@ -7,6 +7,7 @@ import argparse
 import tempfile
 import os
 
+
 if __name__ == "__main__":
 
     parser = argparse.ArgumentParser(description='Worm Propation in Topology Constrained Networks')
@@ -53,7 +54,7 @@ if __name__ == "__main__":
                         
     # Initial Cure Group                            
     cure_init_group = parser.add_mutually_exclusive_group(required=False)
-    infection_init_group.add_argument('--initially_cured', nargs="+", type=int, help='list of initially cured nodes')
+    cure_init_group.add_argument('--initially_cured', nargs="+", type=int, help='list of initially cured nodes')
     cure_init_group.add_argument('--n_initial_cured', default=1, type=int, help='number of nodes to initially cure')
                         
                         
@@ -67,6 +68,9 @@ if __name__ == "__main__":
     # Get/Generate graph                            
     if not args.input_file is None:
         g = gutils.load_graph(args.input_file)
+        n = g.shape[0]
+        m = int(sum(sum(g)))
+        
         utils.prRed("Graph is read from the file")
     else:
         n,m = args.graph_size
@@ -83,7 +87,7 @@ if __name__ == "__main__":
         utils.prYellow(f"Infection rate: {args.pi}, Cure rate: {args.pc},  Spread Type: {spread_type}")                
         initial_infection = args.initially_infected if args.initially_infected else args.n_initial_infected
         initial_cured = args.initially_cured if args.initially_cured else args.n_initial_cured
-                        
+
         if type(initial_infection) == list:
             utils.prGreen(f"A list of initially infected nodes was provided: {initial_infection}")
         else:
